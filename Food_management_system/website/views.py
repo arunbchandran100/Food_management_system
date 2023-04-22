@@ -1,11 +1,13 @@
 from django.shortcuts import render,HttpResponse,redirect
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User#, UserChangeForm
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .helpers import send_forget_password_mail
 #import passlib.pwd  
+from website.models import Profile
+from django.urls import reverse_lazy
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
@@ -45,7 +47,15 @@ def SignupPage(request):
             return redirect('home')
     return render(request,'signup.html')
 
+"""
+class UserEditView(generic.CreateView):
+    form_class = UserChangeForm
+    template_name = 'website/edit_profile.html'
+    success_url = reverse_lazy('home')"""
+    
 
+def profile(request):
+    return render(request, 'view_profile.html')
 
 
 def LoginPage(request):
