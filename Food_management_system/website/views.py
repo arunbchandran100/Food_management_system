@@ -16,7 +16,7 @@ from django.core.exceptions import ValidationError
 
 @login_required(login_url='login')
 def HomePage(request):
-    return render(request,'home.html')
+    return render(request,'registeration/home.html')
 
 from django.contrib.auth import authenticate, login
 
@@ -45,17 +45,17 @@ def SignupPage(request):
             user = authenticate(request, username=email, password=pass1)
             login(request, user)
             return redirect('home')
-    return render(request,'signup.html')
+    return render(request,'registeration/signup.html')
 
 """
 class UserEditView(generic.CreateView):
     form_class = UserChangeForm
-    template_name = 'website/edit_profile.html'
+    template_name = 'registeration//edit_profile.html'
     success_url = reverse_lazy('home')"""
     
 
 def profile(request):
-    return render(request, 'view_profile.html')
+    return render(request, 'registeration/view_profile.html')
 
 
 def LoginPage(request):
@@ -71,7 +71,7 @@ def LoginPage(request):
         else:
             return HttpResponse ("email or Password is incorrect!!!")
 
-    return render (request,'login.html')
+    return render (request,'registeration/login.html')
 
 
 
@@ -115,7 +115,7 @@ def ChangePassword(request, token):
         
     except Exception as e:
         print(e)
-    return render(request , 'change_password.html' , context)
+    return render(request , 'registeration/change_password.html' , context)
 
 
 import uuid
@@ -141,4 +141,4 @@ def ForgetPassword(request,token):
     
     except Exception as e:
         print(e)
-    return render(request , 'forget_password.html')
+    return render(request , 'registeration/forget_password.html')
