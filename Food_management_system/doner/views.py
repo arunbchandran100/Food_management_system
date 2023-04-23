@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import DonateFoodForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from .models import DonateFood
 
 # Create your views here.
 @login_required(login_url='login')
@@ -22,3 +23,11 @@ def donate_food(request):
         if 'submitted' in request.GET:
             submitted = True
     return render(request,'doner/donatefood.html',{'form':form,'submitted':submitted})
+
+
+# donation history view
+def donation_history(request):
+        donation_history=DonateFood.objects.all()
+        return render(request,'doner/donation_history.html',{'donation_history':donation_history})
+
+    
