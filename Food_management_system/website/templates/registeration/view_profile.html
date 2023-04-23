@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
-
+    <a href="{% url 'home' %}" >home</a>
     <!-- Custom Css -->
     <link rel="stylesheet" href="style.css">
 
@@ -37,7 +37,7 @@
                         <tr>
                             <td>Mobile Number</td>
                             <td>:</td>
-                            <td>{{ user.mobile }}</td>
+                            <td>{{ user.profile.mobile }}</td>
                         </tr>
                         <!-- <tr>
                             <td>Job</td>

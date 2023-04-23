@@ -20,6 +20,7 @@ def HomePage(request):
 
 from django.contrib.auth import authenticate, login
 
+
 def SignupPage(request):
     if request.method=='POST':
         fname=request.POST.get('first_name')
@@ -40,12 +41,18 @@ def SignupPage(request):
             
             
             my_user = User.objects.create_user(username=email, first_name=fname, last_name=lname, email=email, password=pass1)
-            my_user.mobile = mobile
+            
+            # Create profile object
+            profile = Profile.objects.create(user=my_user, mobile=mobile)
+            # Save user and profile objects
             my_user.save()
+            profile.save()
+            
             user = authenticate(request, username=email, password=pass1)
             login(request, user)
             return redirect('home')
     return render(request,'registeration/signup.html')
+
 
 """
 class UserEditView(generic.CreateView):
