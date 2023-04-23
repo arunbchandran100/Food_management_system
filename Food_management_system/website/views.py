@@ -60,7 +60,7 @@ class UserEditView(generic.CreateView):
     template_name = 'registeration//edit_profile.html'
     success_url = reverse_lazy('home')"""
     
-
+@login_required(login_url='login')
 def profile(request):
     return render(request, 'registeration/view_profile.html')
 
