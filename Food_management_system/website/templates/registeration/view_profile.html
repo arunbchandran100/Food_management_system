@@ -1,59 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
-    <a href="{% url 'home' %}" >home</a>
-    <!-- Custom Css -->
-    <link rel="stylesheet" href="style.css">
+{%extends 'doner/base.html'%}
 
-    <!-- FontAwesome 5 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-</head>
-<body>
-    <div class="main">
-        <h2>Profile Details</h2>
-        <div class="card">
-            <div class="card-body">
-                <!--<i class="fa fa-pen fa-xs edit"></i>-->
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>First name</td>
-                            <td>:</td>
-                            <td>{{ user.first_name}}</td>
-                        </tr>
-                        <tr>
-                            <td>Last name</td>
-                            <td>:</td>
-                            <td>{{ user.last_name}} </td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>:</td>
-                            <td>{{ user.email}}</td>
-                        </tr>
-                        <tr>
-                            <td>Mobile Number</td>
-                            <td>:</td>
-                            <td>{{ user.profile.mobile }}</td>
-                        </tr>
-                        <!-- <tr>
-                            <td>Job</td>
-                            <td>:</td>
-                            <td>Web Developer</td>
-                        </tr> 
-                        <tr>
-                            <td>Hobbies</td>
-                            <td>:</td>
-                            <td>PHP, HTML, CSS, Java</td>
-                        </tr>-->
-                    </tbody>
-                </table>
-            </div>
-        </div>
+{%block body_block%}
+<div class="hero-info" data-aos="zoom-in" data-aos-delay="100">
+    <h2 >Profile Details</h2>
+    <div>
+        <h5>First name:     {{ user.first_name}}</h5>
+        <h5>Last name:      {{ user.last_name}}</h5>
+        <h5>Email:      {{ user.email}}</h5>
+        <h5>Mobile:     {{ user.profile.mobile }}</h5>
+
+        
     </div>
     <!-- End -->
-</body>
-</html>
+    {% endblock %}

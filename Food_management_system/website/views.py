@@ -16,7 +16,7 @@ from django.core.exceptions import ValidationError
 
 @login_required(login_url='login')
 def HomePage(request):
-    return render(request,'registeration/home.html')
+    return render(request,'doner/index.html')
 
 from django.contrib.auth import authenticate, login
 
@@ -50,7 +50,7 @@ def SignupPage(request):
             
             user = authenticate(request, username=email, password=pass1)
             login(request, user)
-            return redirect('home')
+            return redirect('index')
     return render(request,'registeration/signup.html')
 
 
@@ -74,7 +74,7 @@ def LoginPage(request):
 
         if user is not None:
             login(request,user)
-            return redirect('home')
+            return redirect('index')
         else:
             return HttpResponse ("email or Password is incorrect!!!")
 
