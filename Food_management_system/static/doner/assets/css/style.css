@@ -495,3 +495,9 @@ section {
 h5{
   color: #fff;
 }
+
+/* donation history */
+#donation_history{
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+}
