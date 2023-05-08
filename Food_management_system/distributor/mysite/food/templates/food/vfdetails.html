@@ -1,0 +1,17 @@
+
+{% extends 'food/base.html' %}
+
+
+{% block title %}Food Details{% endblock %}
+
+{% block content %}
+
+
+<p><a href="{% url 'food:fddetails' %}">View food details here</a></p>
+
+<p><a href="{% url 'food:uploadf' %}">Upload food details</a></p>
+
+<p><a href="{% url 'food:updatef' %}">Update food details</a></p>
+
+{% endblock %}
+
