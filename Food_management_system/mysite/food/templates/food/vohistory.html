@@ -1,0 +1,12 @@
+{% extends 'food/base.html' %}
+
+
+{% block title %}Order history{% endblock %}
+
+{% block content %}
+
+<p><a href="{% url 'food:ohistory' %}">View order history here</a></p>
+
+<p><a href="{% url 'food:confirmation' %}">View order confirmation</a></p>
+
+{% endblock %}
