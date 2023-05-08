@@ -15,6 +15,7 @@ from django.conf import settings
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     mobile = models.CharField(max_length=10, blank=True, default='')
+    user_type = models.CharField(max_length=20, blank=True, default='')
 
 
     forget_password_token = models.CharField(max_length=100)

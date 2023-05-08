@@ -29,6 +29,7 @@ def SignupPage(request):
         email=request.POST.get('email')
         pass1=request.POST.get('password1')
         pass2=request.POST.get('password2')
+        user_type = request.POST.get('user_type')
         
         
         if pass1!=pass2:
@@ -43,7 +44,7 @@ def SignupPage(request):
             my_user = User.objects.create_user(username=email, first_name=fname, last_name=lname, email=email, password=pass1)
             
             # Create profile object
-            profile = Profile.objects.create(user=my_user, mobile=mobile)
+            profile = Profile.objects.create(user=my_user, mobile=mobile,user_type=user_type)
             # Save user and profile objects
             my_user.save()
             profile.save()
