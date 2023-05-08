@@ -195,14 +195,21 @@
         <label for="password2">Confirm Password</label>
         <input type="password" placeholder="Confirm Password" id="password2" name="password2" required>
         
-        <label for="user_type" class="radio-label" required>User Type:</label><br>
-        <input type="radio" name="user_type" value="donor" class="signup-radio"> Donor<br>
-        <input type="radio" name="user_type" value="distributor" class="signup-radio"> Distributor<br>
-        <input type="radio" name="user_type" value="normal_user" class="signup-radio"> Normal User<br>
-
+        <label for="donor">Donor</label>
+        <input type="radio" id="donor" name="user_type" value="donor" required>
+      
+        <label for="distributor">Distributor</label>
+        <input type="radio" id="distributor" name="user_type" value="distributor" required>
+      
+        <label for="normal">Normal User</label>
+        <input type="radio" id="normal" name="user_type" value="normal" required>
+      
+      
         <button type="submit" id="signup-btn" >Sign Up</button>
         
         <a href="{% url 'login' %}" >i have already account</a>
     </form>
+
+
 </body>
 </html>
