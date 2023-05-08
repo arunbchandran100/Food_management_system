@@ -21,6 +21,11 @@
         body{
             background-color: #080710;
         }
+
+        body {
+            color: white;
+        }
+          
         .background{
             width: 430px;
             height: 520px;
@@ -148,6 +153,16 @@
 			margin-right: 10px;
 			width: 45%;
 		}
+        
+        input[type=radio] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			margin-right: 10px;
+			width: 45%;
+            color: white;
+
+    	}
 
     </style>
 </head>
@@ -169,7 +184,7 @@
 
         <label for="mobile">Enter your mobile number(10 digits):</label>
         <input type="tel" placeholder="mobile number" id="mobile" name="mobile" pattern="[0-9]{10}" required>
-
+        
         <label for="email">Email</label>
         <input type="email" placeholder="Email" name="email" id="email" required>
 
@@ -179,6 +194,12 @@
 
         <label for="password2">Confirm Password</label>
         <input type="password" placeholder="Confirm Password" id="password2" name="password2" required>
+        
+        <label for="user_type" class="radio-label" required>User Type:</label><br>
+        <input type="radio" name="user_type" value="donor" class="signup-radio"> Donor<br>
+        <input type="radio" name="user_type" value="distributor" class="signup-radio"> Distributor<br>
+        <input type="radio" name="user_type" value="normal_user" class="signup-radio"> Normal User<br>
+
         <button type="submit" id="signup-btn" >Sign Up</button>
         
         <a href="{% url 'login' %}" >i have already account</a>
