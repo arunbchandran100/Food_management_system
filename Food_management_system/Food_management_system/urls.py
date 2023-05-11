@@ -10,6 +10,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('website/', include('website.urls')),
     path('doner/',include('doner.urls')),
-    path('distributor/',include('distributor.urls')),
 
 ]

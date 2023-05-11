@@ -23,9 +23,9 @@ class DonateFoodForm(ModelForm):
             # 'user': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'user name'}),
             'food_type': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'type of food'}),
             'discription': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'food description'}),
-            'supply_date': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'supply date'}),
+            'supply_date': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'supply date (YYYY-MM-DD)'}),
             'pickup_location': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'pickup location'}),
-            'pickup_deadline': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'pickup_deadline'}),
+            'pickup_deadline': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'pickup deadline (YYYY-MM-DD)'}),
             'contact_information': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'contact information'}),
 
 
