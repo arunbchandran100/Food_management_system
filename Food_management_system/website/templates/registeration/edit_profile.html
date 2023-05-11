@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{%extends 'doner/base.html'%}
+
+{%block body_block%}
+<div class="hero-info" data-aos="zoom-in" data-aos-delay="100">
+
+<h1>Edit Profile</h1>
+
+<form action="/update_profile" method="post">
+
+  <div>
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name" id="first_name" value="{{ user.first_name }}">
+  </div>
+
+  <div>
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name" id="last_name" value="{{ user.last_name }}">
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" value="{{ user.email }}">
+  </div>
+
+  <div>
+    <label for="mobile">Mobile:</label>
+    <input type="text" name="mobile" id="mobile" value="{{ user.profile.mobile }}">
+  </div>
+
+  <a href="{% url 'vprofile'%}" class="btn-services scrollto">Submit</a>
+</form>
+
+    
+
+    {% endblock %}

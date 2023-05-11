@@ -13,6 +13,7 @@ urlpatterns = [
     path('logout/',views.LogoutPage,name='logout'),
     
     path('vprofile/',views.profile,name='vprofile'),
+    path('eprofile/',views.editprofile,name='eprofile'),
     
     path('forget_password/' ,views.ForgetPassword , name="forget_password"),
     path('change_password/<token>/' , views.ChangePassword , name="change_password"),

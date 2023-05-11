@@ -10,6 +10,8 @@ from website.models import Profile
 from django.urls import reverse_lazy
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
+from django.urls import reverse
+from django.shortcuts import render
 
 
 # Create your views here.
@@ -61,9 +63,54 @@ class UserEditView(generic.CreateView):
     template_name = 'registeration//edit_profile.html'
     success_url = reverse_lazy('home')"""
     
+
 @login_required(login_url='login')
 def profile(request):
-    return render(request, 'registeration/view_profile.html')
+  if request.method == 'POST':
+    return redirect(reverse('eprofile'))
+
+  return render(request, 'registeration/view_profile.html')
+
+@login_required
+def editprofile(request):
+  if request.method == 'POST':
+    # Get the data that the user submitted from the form.
+    first_name = request.POST.get('first_name')
+    last_name = request.POST.get('last_name')
+    email = request.POST.get('email')
+    #mobile = request.POST.get('mobile')
+    #user_type = request.POST.get('user_type')
+
+    # Validate the data and make sure that it is all correct.
+    if not first_name:
+      return render(request, 'edit_profile.html', {'error': 'First name is required'})
+    if not last_name:
+      return render(request, 'edit_profile.html', {'error': 'Last name is required'})
+    if not email:
+      return render(request, 'edit_profile.html', {'error': 'Email is required'})
+    #if not mobile:
+      #return render(request, 'edit_profile.html', {'error': 'Mobile number is required'})
+
+
+    # Update the user's profile details in the database.
+    # Update the user's profile details in the database.
+    user = request.user
+    user.first_name = first_name
+    user.last_name = last_name
+    user.email = email
+    user.save()
+    #my_user.profile.mobile = mobile
+
+    #my_user.profile.save()
+
+
+    # Redirect the user back to the profile page.
+    return redirect('vprofile')
+
+  else:
+    return render(request, 'registeration/edit_profile.html')
+
+
 
 
 def LoginPage(request):
