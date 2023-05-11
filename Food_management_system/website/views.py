@@ -32,7 +32,7 @@ def SignupPage(request):
         pass1=request.POST.get('password1')
         pass2=request.POST.get('password2')
         user_type = request.POST.get('user_type')
-        
+        print("First name:", fname)
         
         if pass1!=pass2:
             return HttpResponse("Your password and confirm password are not Same!!")
@@ -71,13 +71,21 @@ def profile(request):
 
   return render(request, 'registeration/view_profile.html')
 
+"""
 @login_required
 def editprofile(request):
   if request.method == 'POST':
     # Get the data that the user submitted from the form.
+    print("Test")
     first_name = request.POST.get('first_name')
     last_name = request.POST.get('last_name')
     email = request.POST.get('email')
+    
+    print("hi")
+    print("First name:", first_name)
+    print("Last name:", last_name)
+    print("Email:", email)
+    
     #mobile = request.POST.get('mobile')
     #user_type = request.POST.get('user_type')
 
@@ -92,25 +100,71 @@ def editprofile(request):
       #return render(request, 'edit_profile.html', {'error': 'Mobile number is required'})
 
 
+
+    # Get the updated user object from the database
+
+    # Update the user's profile details in the database
+
+
+    # Save the updated user object to the database
+
+
+    # Refresh the request user object with the updated data from the database
+
+
+
+
     # Update the user's profile details in the database.
     # Update the user's profile details in the database.
-    user = request.user
-    user.first_name = first_name
-    user.last_name = last_name
-    user.email = email
-    user.save()
+    my_user = User.objects.get(username=request.user.username)
+    my_user.first_name = first_name
+    my_user.last_name = last_name
+    my_user.email = email
+    my_user.save()
     #my_user.profile.mobile = mobile
-
+    request.user = my_user
     #my_user.profile.save()
-
+    #print first_name
 
     # Redirect the user back to the profile page.
     return redirect('vprofile')
 
   else:
     return render(request, 'registeration/edit_profile.html')
+"""
 
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        # Get the data that the user submitted from the form.
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        mobile = request.POST.get('mobile')
+        user_type = request.POST.get('user_type')
 
+        print("last name:", last_name)
+        print("mobile:", mobile)
+
+        # Update the user's profile details in the database.
+        my_user = request.user
+        my_user.first_name = first_name
+        my_user.last_name = last_name
+        my_user.email = email
+        my_user.save()
+
+        profile = Profile.objects.get(user=my_user)
+        profile.mobile = mobile
+        profile.user_type = user_type
+        profile.save()
+        
+
+        # Redirect the user to the vprofile page.
+        return redirect('vprofile')
+
+    else:
+        # If the request method is not POST, render the edit profile page.
+        return render(request, 'registeration/edit_profile.html')
 
 
 def LoginPage(request):
@@ -127,9 +181,6 @@ def LoginPage(request):
             return HttpResponse ("email or Password is incorrect!!!")
 
     return render (request,'registeration/login.html')
-
-
-
 
 
 def LogoutPage(request):
