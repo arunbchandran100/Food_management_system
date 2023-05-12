@@ -4,7 +4,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .helpers import send_forget_password_mail
+#from .helpers import send_forget_password_mail
 #import passlib.pwd  
 from website.models import Profile
 from django.urls import reverse_lazy
@@ -57,12 +57,6 @@ def SignupPage(request):
     return render(request,'registeration/signup.html')
 
 
-"""
-class UserEditView(generic.CreateView):
-    form_class = UserChangeForm
-    template_name = 'registeration//edit_profile.html'
-    success_url = reverse_lazy('home')"""
-    
 
 @login_required(login_url='login')
 def profile(request):
@@ -71,67 +65,6 @@ def profile(request):
 
   return render(request, 'registeration/view_profile.html')
 
-"""
-@login_required
-def editprofile(request):
-  if request.method == 'POST':
-    # Get the data that the user submitted from the form.
-    print("Test")
-    first_name = request.POST.get('first_name')
-    last_name = request.POST.get('last_name')
-    email = request.POST.get('email')
-    
-    print("hi")
-    print("First name:", first_name)
-    print("Last name:", last_name)
-    print("Email:", email)
-    
-    #mobile = request.POST.get('mobile')
-    #user_type = request.POST.get('user_type')
-
-    # Validate the data and make sure that it is all correct.
-    if not first_name:
-      return render(request, 'edit_profile.html', {'error': 'First name is required'})
-    if not last_name:
-      return render(request, 'edit_profile.html', {'error': 'Last name is required'})
-    if not email:
-      return render(request, 'edit_profile.html', {'error': 'Email is required'})
-    #if not mobile:
-      #return render(request, 'edit_profile.html', {'error': 'Mobile number is required'})
-
-
-
-    # Get the updated user object from the database
-
-    # Update the user's profile details in the database
-
-
-    # Save the updated user object to the database
-
-
-    # Refresh the request user object with the updated data from the database
-
-
-
-
-    # Update the user's profile details in the database.
-    # Update the user's profile details in the database.
-    my_user = User.objects.get(username=request.user.username)
-    my_user.first_name = first_name
-    my_user.last_name = last_name
-    my_user.email = email
-    my_user.save()
-    #my_user.profile.mobile = mobile
-    request.user = my_user
-    #my_user.profile.save()
-    #print first_name
-
-    # Redirect the user back to the profile page.
-    return redirect('vprofile')
-
-  else:
-    return render(request, 'registeration/edit_profile.html')
-"""
 
 @login_required
 def edit_profile(request):
@@ -143,8 +76,10 @@ def edit_profile(request):
         mobile = request.POST.get('mobile')
         user_type = request.POST.get('user_type')
 
-        print("last name:", last_name)
-        print("mobile:", mobile)
+        # Check if the new email is already in use by another user.
+        if User.objects.exclude(id=request.user.id).filter(email=email).exists():
+            messages.add_message(request, messages.ERROR,  'The email address you entered is already in use. Please choose another.')
+            return redirect('edit_profile')
 
         # Update the user's profile details in the database.
         my_user = request.user
@@ -157,14 +92,14 @@ def edit_profile(request):
         profile.mobile = mobile
         profile.user_type = user_type
         profile.save()
-        
 
-        # Redirect the user to the vprofile page.
+        # Redirect the user to the profile page.
         return redirect('vprofile')
 
     else:
         # If the request method is not POST, render the edit profile page.
         return render(request, 'registeration/edit_profile.html')
+
 
 
 def LoginPage(request):
@@ -215,10 +150,7 @@ def ChangePassword(request, token):
             user_obj.save()
             return redirect('/login/')
             
-            
-            
-        
-        
+    
     except Exception as e:
         print(e)
     return render(request , 'registeration/change_password.html' , context)

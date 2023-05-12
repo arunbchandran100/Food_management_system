@@ -18,7 +18,6 @@ class Profile(models.Model):
     user_type = models.CharField(max_length=20, blank=True, default='')
 
 
-    forget_password_token = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
