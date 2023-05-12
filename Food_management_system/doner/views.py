@@ -26,6 +26,7 @@ def donate_food(request):
 
 
 # donation history view
+@login_required(login_url='login')
 def donation_history(request):
         donation_history=DonateFood.objects.all()
         return render(request,'doner/donation_history.html',{'donation_history':donation_history})
