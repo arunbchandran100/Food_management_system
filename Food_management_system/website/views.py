@@ -42,6 +42,19 @@ def SignupPage(request):
             except ValidationError as e:
                 return HttpResponse("Password validation failed: " + str(e))
             
+            # Check if the new email is already in use by another user.
+            if User.objects.filter(email=email).exists():
+                error_message = f"The email id {email} is already used by another user. Please choose another."
+                messages.add_message(request, messages.ERROR, error_message)
+
+            # Check if the new mobile number is already in use by another user.
+            if Profile.objects.filter(mobile=mobile).exists():
+                messages.add_message(request, messages.ERROR, f"The mobile number '{mobile}' is already in use by another user. Please choose another.")
+
+            # If there are any error messages, redirect to the signup page.
+            if messages.get_messages(request):
+                return redirect('signup')
+            
             
             my_user = User.objects.create_user(username=email, first_name=fname, last_name=lname, email=email, password=pass1)
             
@@ -78,10 +91,17 @@ def edit_profile(request):
 
         # Check if the new email is already in use by another user.
         if User.objects.exclude(id=request.user.id).filter(email=email).exists():
-            error_message = f"{email} is already used by another user. Please choose another."
+            error_message = f"The email id {email} is already used by another user. Please choose another."
             messages.add_message(request, messages.ERROR, error_message)
-            return redirect('edit_profile')
 
+        # Check if the new mobile number is already in use by another user.
+        if Profile.objects.exclude(user=request.user).filter(mobile=mobile).exists():
+            messages.add_message(request, messages.ERROR, f"The mobile number '{mobile}' is already in use by another user. Please choose another.")
+
+        # If there are any error messages, redirect to the edit profile page.
+        if messages.get_messages(request):
+            return redirect('edit_profile')
+        
         # Update the user's profile details in the database.
         my_user = request.user
         my_user.first_name = first_name
