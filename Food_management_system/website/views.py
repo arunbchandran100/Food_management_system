@@ -78,7 +78,8 @@ def edit_profile(request):
 
         # Check if the new email is already in use by another user.
         if User.objects.exclude(id=request.user.id).filter(email=email).exists():
-            messages.add_message(request, messages.ERROR,  'The email address you entered is already in use. Please choose another.')
+            error_message = f"{email} is already used by another user. Please choose another."
+            messages.add_message(request, messages.ERROR, error_message)
             return redirect('edit_profile')
 
         # Update the user's profile details in the database.
