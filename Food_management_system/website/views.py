@@ -52,6 +52,19 @@ def SignupPage(request):
         if messages.get_messages(request):
             return redirect('signup')
             
+            # Check if the new email is already in use by another user.
+            if User.objects.filter(email=email).exists():
+                error_message = f"The email id {email} is already used by another user. Please choose another."
+                messages.add_message(request, messages.ERROR, error_message)
+
+            # Check if the new mobile number is already in use by another user.
+            if Profile.objects.filter(mobile=mobile).exists():
+                messages.add_message(request, messages.ERROR, f"The mobile number '{mobile}' is already in use by another user. Please choose another.")
+
+            # If there are any error messages, redirect to the signup page.
+            if messages.get_messages(request):
+                return redirect('signup')
+            
             
         my_user = User.objects.create_user(username=email, first_name=fname, last_name=lname, email=email, password=pass1)
             
