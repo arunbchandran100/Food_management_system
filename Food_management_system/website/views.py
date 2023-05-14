@@ -35,7 +35,12 @@ def SignupPage(request):
         print("First name:", fname)
         
         if pass1!=pass2:
-            return HttpResponse("Your password and confirm password are not Same!!")
+            messages.add_message(request, messages.ERROR, f"Your password and confirm password are not Same!!")
+
+            # If there are any error messages, redirect to the signup page.
+        if messages.get_messages(request):
+            return redirect('signup')
+        
         else:
             try:
                 validate_password(pass1)
@@ -134,7 +139,13 @@ def LoginPage(request):
             login(request,user)
             return redirect('index')
         else:
-            return HttpResponse ("email or Password is incorrect!!!")
+            #return HttpResponse ("email or Password is incorrect!!!")
+            messages.add_message(request, messages.ERROR, f"Wrong email id or Password!!!")
+
+            # If there are any error messages, redirect to the signup page.
+            if messages.get_messages(request):
+                return redirect('login')
+
 
     return render (request,'registeration/login.html')
 
