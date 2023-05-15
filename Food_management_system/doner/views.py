@@ -17,11 +17,9 @@ def donate_food(request):
         if form.is_valid():
             form.save()
             return redirect("index")
-    # elif request.method== "GET":
-    #      form=DonateFoodForm(initial={"user":request.user})
         
     else:    
-        form=DonateFoodForm(user_id=request.user) 
+        form=DonateFoodForm 
         if 'submitted' in request.GET:
             submitted = True
     return render(request,'doner/donatefood.html',{'form':form,'submitted':submitted})

@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class DonateFood(models.Model):
-    user = models.CharField(max_length=100)
+    # user=models.CharField(max_length=100)
     food_type=models.CharField(max_length=100)
     discription=models.TextField()
     supply_date=models.DateField()
