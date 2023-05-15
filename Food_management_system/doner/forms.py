@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import DonateFood
-
+from django.contrib.auth.models import User
 
 class DonateFoodForm(ModelForm):
     class Meta:
@@ -10,7 +10,7 @@ class DonateFoodForm(ModelForm):
         Description= forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'class': 'input food-donate-form'}))
         labels= {
 
-            # 'user': '',
+            'user': '',
             'food_type': '',
             'discription': '',
             'supply_date': '',
@@ -20,7 +20,7 @@ class DonateFoodForm(ModelForm):
         }
         widgets = {
 
-            # 'user': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'user name'}),
+            'user': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'user name'}),
             'food_type': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'type of food'}),
             'discription': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'food description'}),
             'supply_date': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'supply date (YYYY-MM-DD)'}),
@@ -31,3 +31,5 @@ class DonateFoodForm(ModelForm):
 
 
         }
+        
+        
