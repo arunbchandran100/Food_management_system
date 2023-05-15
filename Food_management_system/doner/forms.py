@@ -20,7 +20,7 @@ class DonateFoodForm(ModelForm):
         }
         widgets = {
 
-            'user': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'user name'}),
+            'user': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'user name',}),
             'food_type': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'type of food'}),
             'discription': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'food description'}),
             'supply_date': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'supply date (YYYY-MM-DD)'}),

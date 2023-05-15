@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< Updated upstream
 {% extends 'doner/base.html' %}
 
 {% block body_block %}
@@ -53,3 +54,20 @@
   </div>
 </div>
 {% endblock %}
+=======
+{%extends 'doner/base.html'%}
+
+{%block body_block%}
+<div class="hero-info" data-aos="zoom-in" data-aos-delay="100">
+    <h2 >Profile Details</h2>
+    <div>
+        <h5>First name:     {{ user.first_name}}</h5>
+        <h5>Last name:      {{ user.last_name}}</h5>
+        <h5>Email:      {{ user.email}}</h5>
+        <h5>Mobile:     {{ user.profile.mobile }}</h5>
+
+        
+    </div>
+    <!-- End -->
+    {% endblock %}
+>>>>>>> Stashed changes
