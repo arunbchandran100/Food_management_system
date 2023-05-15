@@ -1,6 +1,7 @@
 import re
-from django.core.exceptions import ValidationError
+#from django.core.exceptions import ValidationError
 
+"""
 def validate_mobile_number(value):
     pattern = re.compile(r'^\+?1?\d{9,15}$')
     if not pattern.match(value):
@@ -17,17 +18,17 @@ class CustomPasswordValidator:
             raise ValidationError("Password must contain at least one special character.")
     def get_help_text(self):
         return "Password must be at least 6 characters long, contain at least one number, and one special character."
-    
-def validate_password(value):
-        if len(value) < 4:
-            raise ValidationError("Password must be at least 4 characters long.")
-        if not any(char.isdigit() for char in value):
+
+def validate_password(password):
+        if len(password) < 6:
+            raise ValidationError("Password must be at least 6 characters long.")
+        if not any(char.isdigit() for char in password):
             raise ValidationError("Password must contain at least one number.")
-        if not re.search(r'[!@#$%^&*(),.?":{}|<>]', value):
+        if not re.search(r'[!@#$%^&*(),.?":{}|<>]', password):
             raise ValidationError("Password must contain at least one special character.")
 def get_help_text(self):
         return "Password must be at least 6 characters long, contain at least one number, and one special character."
-#test
+#test"""  
 """
 class NumberValidator(object):
     def validate(self, password, user=None):
