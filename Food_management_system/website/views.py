@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User#, UserChangeForm
-from django.contrib.auth.hashers import make_password
+#from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -8,8 +8,8 @@ from django.contrib import messages
 #import passlib.pwd  
 from website.models import Profile
 from django.urls import reverse_lazy
-from django.contrib.auth.password_validation import validate_password
-from django.core.exceptions import ValidationError
+#from django.contrib.auth.password_validation import validate_password
+#from django.core.exceptions import ValidationError
 from django.urls import reverse
 from django.shortcuts import render
 
@@ -41,37 +41,40 @@ def SignupPage(request):
         if messages.get_messages(request):
             return redirect('signup')
         
-        else:
-            try:
-                validate_password(pass1)
-            except ValidationError as e:
-                return HttpResponse("Password validation failed: " + str(e))
+        """
+        try:
+            validate_password(pass1)
+            
+        except ValidationError as e:
+            for message in e.messages:
+                messages.error(request, message)
+        """
             
             # Check if the new email is already in use by another user.
-            if User.objects.filter(email=email).exists():
-                error_message = f"The email id {email} is already used by another user. Please choose another."
-                messages.add_message(request, messages.ERROR, error_message)
+        if User.objects.filter(email=email).exists():
+            error_message = f"The email id {email} is already used by another user. Please choose another."
+            messages.add_message(request, messages.ERROR, error_message)
 
             # Check if the new mobile number is already in use by another user.
-            if Profile.objects.filter(mobile=mobile).exists():
-                messages.add_message(request, messages.ERROR, f"The mobile number '{mobile}' is already in use by another user. Please choose another.")
+        if Profile.objects.filter(mobile=mobile).exists():
+            messages.add_message(request, messages.ERROR, f"The mobile number '{mobile}' is already in use by another user. Please choose another.")
 
             # If there are any error messages, redirect to the signup page.
-            if messages.get_messages(request):
-                return redirect('signup')
+        if messages.get_messages(request):
+            return redirect('signup')
             
             
-            my_user = User.objects.create_user(username=email, first_name=fname, last_name=lname, email=email, password=pass1)
+        my_user = User.objects.create_user(username=email, first_name=fname, last_name=lname, email=email, password=pass1)
             
             # Create profile object
-            profile = Profile.objects.create(user=my_user, mobile=mobile,user_type=user_type)
+        profile = Profile.objects.create(user=my_user, mobile=mobile,user_type=user_type)
             # Save user and profile objects
-            my_user.save()
-            profile.save()
+        my_user.save()
+        profile.save()
             
-            user = authenticate(request, username=email, password=pass1)
-            login(request, user)
-            return redirect('index')
+        user = authenticate(request, username=email, password=pass1)
+        login(request, user)
+        return redirect('index')
     return render(request,'registeration/signup.html')
 
 
@@ -112,6 +115,7 @@ def edit_profile(request):
         my_user.first_name = first_name
         my_user.last_name = last_name
         my_user.email = email
+        my_user.username=email
         my_user.save()
 
         profile = Profile.objects.get(user=my_user)
