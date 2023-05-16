@@ -59,17 +59,37 @@
                           <div class="form-group py-1">
                             <div class="input-field">
                               <span class="fas fa-lock p-2"></span>
-                              <input type="password" placeholder="Enter your Password" id="password1" name="password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Password requirements:
-                              - Minimum length of 6 characters.
-                              - Must include at least one capital letter, one lowercase letter, and one number." required>
+                              <input type="password" placeholder="Password" id="password1" name="password1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Password requirements: - Minimum length of 6 characters. - Must include at least one capital letter, one lowercase letter, and one number." required>
                               <button class="btn bg-white text-muted">
-                                  <span class="far fa-eye-slash"></span>
+                                <span class="far fa-eye-slash"></span>
                               </button>
-                          </div>
+                            </div>
                           </div>
                           <div class="form-group py-1">
-                            <div class="input-field"><span class="fas fa-lock p-2"></span> <input type="password" placeholder="Confirm Password" id="password2" name="password2" required> <button class="btn bg-white text-muted"> <span class="far fa-eye-slash"></span> </button> </div>
+                            <div class="input-field">
+                              <span class="fas fa-lock p-2"></span>
+                              <input type="password" placeholder="Confirm Password" id="password2" name="password2" required onkeyup="checkPassword()">
+                              <button class="btn bg-white text-muted">
+                                <span class="far fa-eye-slash"></span>
+                              </button>
+                            </div>
                           </div>
+                          <div id="passwordError" style="display:none;color:red">Password and Confirm Password do not match</div>
+
+                          <script>
+                          function checkPassword() {
+                            var password1 = document.getElementById("password1").value;
+                            var password2 = document.getElementById("password2").value;
+                            if (password1 != password2) {
+                              document.getElementById("passwordError").style.display = "block";
+                            } else {
+                              document.getElementById("passwordError").style.display = "none";
+                            }
+                          }
+                          </script>
+
+                          
+
                           <div class="row">
                             <div class="col-md-8">
                               <div class="form-group">
