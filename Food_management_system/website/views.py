@@ -34,41 +34,27 @@ def SignupPage(request):
         user_type = request.POST.get('user_type')
         print("First name:", fname)
         
-        if pass1!=pass2:
-            messages.add_message(request, messages.ERROR, f"Your password and confirm password are not Same!!")
-
-            # If there are any error messages, redirect to the signup page.
-        if messages.get_messages(request):
-            return redirect('signup')
         
-        """
-        try:
-            validate_password(pass1)
             
-        except ValidationError as e:
-            for message in e.messages:
-                messages.error(request, message)
-        """
-            
-            # Check if the new email is already in use by another user.
+        # Check if the new email is already in use by another user.
         if User.objects.filter(email=email).exists():
             error_message = f"The email id {email} is already used by another user. Please choose another."
             messages.add_message(request, messages.ERROR, error_message)
 
-            # Check if the new mobile number is already in use by another user.
+        # Check if the new mobile number is already in use by another user.
         if Profile.objects.filter(mobile=mobile).exists():
             messages.add_message(request, messages.ERROR, f"The mobile number '{mobile}' is already in use by another user. Please choose another.")
 
-            # If there are any error messages, redirect to the signup page.
+        # If there are any error messages, redirect to the signup page.
         if messages.get_messages(request):
             return redirect('signup')
             
             
         my_user = User.objects.create_user(username=email, first_name=fname, last_name=lname, email=email, password=pass1)
             
-            # Create profile object
+        # Create profile object
         profile = Profile.objects.create(user=my_user, mobile=mobile,user_type=user_type)
-            # Save user and profile objects
+        # Save user and profile objects
         my_user.save()
         profile.save()
             
