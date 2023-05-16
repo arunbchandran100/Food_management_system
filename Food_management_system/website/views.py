@@ -16,6 +16,9 @@ from django.shortcuts import render
 
 # Create your views here.
 
+def basehome(request):
+    return render(request,'registeration/basehome.html')
+
 @login_required(login_url='login')
 def HomePage(request):
     return render(request,'doner/index.html')

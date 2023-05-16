@@ -45,14 +45,12 @@
     <div class="container d-flex justify-content-between">
 
       <div class="logo">
-        <!-- Uncomment below if you prefer to use an text logo -->
-        <!-- <h1><a href="index.html">NewBiz</a></h1> -->
-        <!-- <a href="home.html"><img src="{% static 'website/assets/img/logo.png'%}" alt="" class="img-fluid"></a> -->
+        <h1><a href="index.html">NO MORE HUNGER</a></h1>
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'index' %}">Home</a></li>
+
           <li><a class="nav-link scrollto" href="{% url 'login' %}">login</a></li>
           <li><a class="nav-link scrollto" href="{% url 'signup' %}">Signup</a></li>
 
@@ -67,7 +65,7 @@
   <section id="hero" class="clearfix">
     <div class="container" data-aos="fade-up">
     {%block body_block%}
-
+    <h1 style="color:white">Welcome to our website</h1>
 
     {%endblock%}
       
