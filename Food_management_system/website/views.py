@@ -49,6 +49,12 @@ def SignupPage(request):
             for message in e.messages:
                 messages.error(request, message)
         """
+            return HttpResponse("Your password and confirm password are not Same!!")
+        else:
+            try:
+                validate_password(pass1)
+            except ValidationError as e:
+                return HttpResponse("Password validation failed: " + str(e))
             
             # Check if the new email is already in use by another user.
         if User.objects.filter(email=email).exists():
@@ -150,6 +156,7 @@ def LoginPage(request):
             if messages.get_messages(request):
                 return redirect('login')
 
+            return HttpResponse ("email or Password is incorrect!!!")
 
     return render (request,'registeration/login.html')
 
