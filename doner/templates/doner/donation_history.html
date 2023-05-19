@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{%extends 'doner/base.html'%}
+
+{%block body_block%}
+
+
+    <h2 id="donation_history">Your donations</h2>
+    
+<div>
+<table class="table table-success table-striped">
+    <tr>
+        <td>user</td>
+        <td>donor_type</td>
+        <td>donor_discription</td>
+        <td>food_type</td>
+        <td>food</td>
+        <td>food_discription</td>
+        <td>date</td>
+        <td>location</td>
+
+
+
+
+    </tr>
+{% for donation in donation_history%}
+    <tr>
+        <td>{{donation.user}}</td>
+        <td>{{donation.donor_type}}</td>
+        <td>{{donation.donor_discription}}</td>
+        <td>{{donation.food_type}}</td>
+        <td>{{donation.food}}</td>
+        <td>{{donation.food_discription}}</td>
+        <td>{{donation.date}}</td>
+        <td>{{donation.location}}</td>
+
+
+
+
+</tr>
+
+{% endfor%}
+</table>
+</div>
+{% endblock %}
