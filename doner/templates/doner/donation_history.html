@@ -17,6 +17,8 @@
         <td>food_discription</td>
         <td>date</td>
         <td>location</td>
+        <td></td>
+        <td></td>
 
 
 
@@ -32,6 +34,8 @@
         <td>{{donation.food_discription}}</td>
         <td>{{donation.date}}</td>
         <td>{{donation.location}}</td>
+        <td><a href="{%url 'donation-edit' donation.id%}" class="btn btn-success">Edit</a></td>
+        <td> <a href="{%url 'donation-delete' donation.id%}" class="btn btn-danger">Delete</a></td>
 
 
 

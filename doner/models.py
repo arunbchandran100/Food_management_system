@@ -28,3 +28,10 @@ class DonateFoodModel(models.Model):
     location=models.CharField(max_length=100)
     def __str__(self):
         return self.user
+
+
+class FeedbackModel(models.Model):
+    user=models.CharField(max_length=120)
+    feedback=models.CharField(max_length=200)
+    def __str__(self):
+        return self.user

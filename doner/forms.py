@@ -1,5 +1,5 @@
 from django import forms
-from .models import DonateFoodModel
+from .models import DonateFoodModel,FeedbackModel
 from django.forms import ModelForm
 
 class DonateFoodForm(ModelForm):
@@ -35,4 +35,13 @@ class DonateFoodForm(ModelForm):
             'location': forms.TextInput(attrs={'class': 'input'}),
             'date': forms.TextInput(attrs={'class': 'input'})
 
+        }
+
+class FeedbackForm(ModelForm):
+    feedback = forms.CharField(widget=forms.Textarea(attrs={'rows': 8,'class':'input'}))
+    class Meta:
+        model=FeedbackModel
+        fields=['user','feedback']
+        widgets = {
+            'user': forms.TextInput(attrs={'class': 'input'}),
         }
