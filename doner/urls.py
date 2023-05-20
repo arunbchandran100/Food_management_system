@@ -12,6 +12,4 @@ urlpatterns = [
     path('feedback-list',FeedbacklistView.as_view(),name="feedback-list"),
     path('donation-edit/<int:pk>',DonationEditView.as_view(),name="donation-edit"),
     path('donation-delete/<int:pk>',DonationDeleteView.as_view(),name='donation-delete')
-
-    
 ]

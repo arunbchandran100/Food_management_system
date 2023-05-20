@@ -20,20 +20,20 @@ class DonateFoodForm(ModelForm):
         ("Nonveg","Nonveg"),
         ("Both","Both")
     ]
-    donor_type = forms.ChoiceField(choices=choice1, required=True,widget=forms.Select(attrs={'class': 'input'}) )
-    food_type = forms.ChoiceField(choices=choice3, required=True,widget=forms.Select(attrs={'class': 'input'}) )
-    food = forms.ChoiceField(choices=choice2, required=True,widget=forms.Select(attrs={'class': 'input'}) )
-    donor_discription= forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'class': 'input'}))
-    food_discription= forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'class': 'input'}))
+    donor_type = forms.ChoiceField(choices=choice1, required=True,widget=forms.Select(attrs={'class': 'input','id':'dof-fld'}) )
+    food_type = forms.ChoiceField(choices=choice3, required=True,widget=forms.Select(attrs={'class': 'input','id':'dof-fld'}) )
+    food = forms.ChoiceField(choices=choice2, required=True,widget=forms.Select(attrs={'class': 'input','id':'dof-fld'}) )
+    donor_discription= forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'class': 'input','id':'dof-fld'}))
+    food_discription= forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'class': 'input','id':'dof-fld'}))
 
     class Meta:
         model=DonateFoodModel
         fields="__all__"
         widgets = {
 
-            'user': forms.TextInput(attrs={'class': 'input'}),
-            'location': forms.TextInput(attrs={'class': 'input'}),
-            'date': forms.TextInput(attrs={'class': 'input'})
+            'user': forms.TextInput(attrs={'class': 'input','id':'dof-fld'}),
+            'location': forms.TextInput(attrs={'class': 'input','id':'dof-fld'}),
+            'date': forms.TextInput(attrs={'class': 'input','id':'dof-fld'})
 
         }
 

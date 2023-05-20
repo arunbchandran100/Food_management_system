@@ -6,7 +6,8 @@ from .models import DonateFoodModel,FeedbackModel
 from django.views.generic import TemplateView
 from django.utils.decorators import method_decorator
 from django.contrib.admin.views.decorators import staff_member_required
-
+from django.utils import timezone
+from datetime import date
 # Create your views here.
 @login_required(login_url='login')
 def home(request):
@@ -20,7 +21,8 @@ class DonateFoodView(TemplateView):
     template_name = "doner/donatefood.html"
     context={}
     def get(self, request, *args, **kwargs):
-        form=self.form_class(initial={"user":request.user})
+        today = timezone.localdate()
+        form=self.form_class(initial={"user":request.user,"date":today})
         self.context["form"]=form
         return render(request,self.template_name,self.context)
     def post(self,request,*args,**kwargs):
