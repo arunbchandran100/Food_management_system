@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+{%load static%}
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>NO MORE HUNGER</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'doner/assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'doner/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'doner/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'doner/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'doner/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'doner/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'doner/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'doner/assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NewBiz
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
+
+      <div class="logo">
+        <h1><a href="index.html">NO MORE HUNGER</a></h1>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+
+          <li><a class="nav-link scrollto" href="{% url 'login' %}">login</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'signup' %}">Signup</a></li>
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- #header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="clearfix">
+    <div class="container" data-aos="fade-up">
+    {%block body_block%}
+    <h1 style="color:white">Welcome to our website</h1>
+
+    {%endblock%}
+      
+
+    </div>
+  </section><!-- End Hero Section -->
+
+  <main id="main">
+
+    
+  <!-- Vendor JS Files -->
+  <script src="{% static 'doner/assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'doner/assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'doner/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'doner/assets/vendor/glightbox/js/glightbox.min.js '%}"></script>
+  <script src="{% static 'doner/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'doner/assets/vendor/swiper/swiper-bundle.min.js' %} "></script>
+  <script src="{% static 'doner/assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'doner/assets/js/main.js'%}"></script>
+
+
+    
+</body>
+
+</html>
