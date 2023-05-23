@@ -52,7 +52,11 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'index' %}">Home</a></li>
+          {% if request.resolver_match.app_name == 'doner' %}
+          <li><a class="nav-link scrollto active" href="{% url 'doner:index' %}">Home</a></li>
+        {% elif request.resolver_match.app_name == 'food' %}
+          <li><a class="nav-link scrollto active" href="{% url 'food:index' %}">Home</a></li>
+        {% endif %}
           <li><a class="nav-link scrollto" href="{% url 'food:vfdetails' %}">Availabe Donations</a></li>
           <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li> -->
           <!-- <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li> -->

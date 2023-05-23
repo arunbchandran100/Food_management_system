@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends 'food/base.html' %}
+
+{% block body_block %}
+  <h1 id="donate-heading">Request Donation</h1>
+  {% if submitted %}
+    <a href="">Your data is submitted</a>
+  {% else %}
+    <form class="donate" action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input id="donate-submit" type="submit" value="Submit">
+    </form>
+  {% endif %}
+{% endblock %}

@@ -1,12 +1,26 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from food.models import DonateFood
+from django.shortcuts import render, redirect
+from .forms import RequestDonationForm
+from .models import RequestDonation
+from doner.models import DonateFood
 
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+@login_required(login_url='login')
+def home(request):
+    return render(request,"food/index.html",{})
 
-def index(request):
-    ctx = {'name':'Food Management System'}
-    return render(request, 'food/index.html',ctx)
+@login_required(login_url='login')
+def request_donation(request):
+    submitted = False
+    if request.method == "POST":
+        form = RequestDonationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("index")
+    else:
+        form = RequestDonationForm()
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'food/request_donation.html', {'form': form, 'submitted': submitted})
 
 def vfdetails(request):
     donations = DonateFood.objects.all()

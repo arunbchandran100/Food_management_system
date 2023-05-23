@@ -10,33 +10,25 @@
 <table class="table table-success table-striped">
     <tr>
         <td>user</td>
-        <td>donor_type</td>
-        <td>donor_discription</td>
         <td>food_type</td>
-        <td>food</td>
-        <td>food_discription</td>
-        <td>date</td>
-        <td>location</td>
-        <td></td>
-        <td></td>
-
+        <td>discription</td>
+        <td>supply_date</td>
+        <td>pickup_location</td>
+        <td>pickup_deadline</td>
+        <td>contact_information</td>
 
 
 
     </tr>
 {% for donation in donation_history%}
     <tr>
-        <td>{{donation.user}}</td>
-        <td>{{donation.donor_type}}</td>
-        <td>{{donation.donor_discription}}</td>
+        <td>{{user.first_name}}</td>
         <td>{{donation.food_type}}</td>
-        <td>{{donation.food}}</td>
-        <td>{{donation.food_discription}}</td>
-        <td>{{donation.date}}</td>
-        <td>{{donation.location}}</td>
-        <td><a href="{%url 'donation-edit' donation.id%}" class="btn btn-success">Edit</a></td>
-        <td> <a href="{%url 'donation-delete' donation.id%}" class="btn btn-danger">Delete</a></td>
-
+        <td>{{donation.discription}}</td>
+        <td>{{donation.supply_date}}</td>
+        <td>{{donation.pickup_location}}</td>
+        <td>{{donation.pickup_deadline}}</td>
+        <td>{{donation.contact_information}}</td>
 
 
 
