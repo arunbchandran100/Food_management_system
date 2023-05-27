@@ -1,0 +1,27 @@
+{% extends 'food/base.html' %}
+
+{% block body_block %}
+<section id="donation-section" class="section">
+  <div class="container">
+    <h2 class="section-title" style="font-weight: bold; color: white; margin-top: -6px; font-size: 40px;">Available Donations</h2>
+    {% if donations %}
+    <div class="row">
+      {% for donation in donations %}
+      <div class="col-lg-4 col-md-6">
+        <div class="donation-item">
+          <h3 class="donation-title" style="color: white;">{{ donation.food_type }}</h3>
+          <p class="donation-description" style="color: white;">{{ donation.discription }}</p>
+          <p class="donation-info" style="color: white;">Supply Date: {{ donation.supply_date }}</p>
+          <p class="donation-info" style="color: white;">Pickup Location: {{ donation.pickup_location }}</p>
+          <p class="donation-info" style="color: white;">Pickup Deadline: {{ donation.pickup_deadline }}</p>
+          <p class="donation-info" style="color: white;">Contact Information: {{ donation.contact_information }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p style="color: white;">No donations available.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
