@@ -56,7 +56,7 @@ a:hover {
     display: flex;
     align-items: center;
     cursor: pointer;
-    border: 1px solid #ddd;
+    border: 1px solid #f3f3f3;
     color: #4343ff
 }
 
@@ -88,7 +88,7 @@ a[target='_blank'] {
 }
 
 .bordert {
-    border-top: 1px solid #aaa;
+    border-top: 1px solid #8d7070;
     position: relative
 }
 
@@ -97,7 +97,7 @@ a[target='_blank'] {
     position: absolute;
     top: -13px;
     left: 33%;
-    background-color: #fff;
+    background-color: #f1f1f1;
     padding: 0px 8px
 }
 
