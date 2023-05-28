@@ -3,17 +3,52 @@
 
 {%block body_block%}
 
-    <h1 id="donate-heading">Donate food</h1>
-    {% if submitted%}
+<h1 id="donate-heading">Donate food</h1>
+<form action="" method="POST">{%csrf_token%}
+    <div class="container ">
+        <div class="row " id="donate-form">
+            <div class="col-6 col-sm-3">
+                <div class="label-gap">
+                    <label for="user" class="dof-lab">Username</label>
+                    {{form.user}}
+                </div>
+                <div class="label-gap">
+                    <label for=" donor_type" class="dof-lab">Donor Type</label>
+                    {{form.donor_type}}
+                </div>
+                <div class="label-gap">
+                    <label for=" donor_discription" class="dof-lab">Donor discription</label>
+                    {{form.donor_discription}}
+                </div>
+                <div class="label-gap">
+                    <label for="location" class="dof-lab">Location</label>
+                    {{form.location}}
+                </div>
+            </div>
+            <div class="col-6 col-sm-3" id="dofm-col2">
+                <div class="label-gap">
+                    <label for="food_type" class="dof-lab">Food type</label>
+                    {{form.food_type}}
+                </div>
+                <div class="label-gap">
+                    <label for="food" class="dof-lab">Food</label>
+                    {{form.food}}
+                </div>
+                <div class="label-gap">
+                    <label for="food_discription" class="dof-lab">Food discription</label>
+                    {{form.food_discription}}
+                </div>
+                <div class="label-gap">
+                    <label for="date" class="dof-lab">Date</label>
+                    {{form.date}}
+                </div>
+            </div>
+            <div class="label-gap">
+      <input type="submit" id='donate-submit'value="submit">
+            </div>
+        </div>
+    </div>
 
-        <a href="">your data is submitted</a>
-
-    {%else%}
-        <form class="donate" action="" method=POST>
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input id="donate-submit" type="submit" value="submit">
-
-        </form>
-    {%endif%}
+</form>
     {% endblock %}
+    

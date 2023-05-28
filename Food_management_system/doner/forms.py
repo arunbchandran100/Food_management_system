@@ -1,33 +1,47 @@
 from django import forms
+from .models import DonateFoodModel,FeedbackModel
 from django.forms import ModelForm
-from .models import DonateFood
-
 
 class DonateFoodForm(ModelForm):
-    class Meta:
-        model=DonateFood
-        fields="__all__"
-        Description= forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'class': 'input food-donate-form'}))
-        labels= {
+    choice1=[
+       ("Hotel","Hotel"),
+       ("Catering","catering"),
+       ("Hostels","Hostels"),
+       ("Normal user","Normal user")
+    ]
+    choice2=[
+        ("biriyani","biriyani"),
+        ("rice","rice"),
+        ("porota curry","porota curry"),
+        ("puttu curry","puttu curry")
+    ]
+    choice3=[
+        ("veg","veg"),
+        ("Nonveg","Nonveg"),
+        ("Both","Both")
+    ]
+    donor_type = forms.ChoiceField(choices=choice1, required=True,widget=forms.Select(attrs={'class': 'input','id':'dof-fld'}) )
+    food_type = forms.ChoiceField(choices=choice3, required=True,widget=forms.Select(attrs={'class': 'input','id':'dof-fld'}) )
+    food = forms.ChoiceField(choices=choice2, required=True,widget=forms.Select(attrs={'class': 'input','id':'dof-fld'}) )
+    donor_discription= forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'class': 'input','id':'dof-fld'}))
+    food_discription= forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'class': 'input','id':'dof-fld'}))
 
-            # 'user': '',
-            'food_type': '',
-            'discription': '',
-            'supply_date': '',
-            'pickup_location': '',
-            'pickup_deadline': '',
-            'contact_information':'',
-        }
+    class Meta:
+        model=DonateFoodModel
+        fields="__all__"
         widgets = {
 
-            # 'user': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'user name'}),
-            'food_type': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'type of food'}),
-            'discription': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'food description'}),
-            'supply_date': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'supply date (YYYY-MM-DD)'}),
-            'pickup_location': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'pickup location'}),
-            'pickup_deadline': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'pickup deadline (YYYY-MM-DD)'}),
-            'contact_information': forms.TextInput(attrs={'class': 'form-control food-donate-form','placeholder':'contact information'}),
+            'user': forms.TextInput(attrs={'class': 'input','id':'dof-fld'}),
+            'location': forms.TextInput(attrs={'class': 'input','id':'dof-fld'}),
+            'date': forms.TextInput(attrs={'class': 'input','id':'dof-fld'})
 
+        }
 
-
+class FeedbackForm(ModelForm):
+    feedback = forms.CharField(widget=forms.Textarea(attrs={'rows': 8,'class':'input'}))
+    class Meta:
+        model=FeedbackModel
+        fields=['user','feedback']
+        widgets = {
+            'user': forms.TextInput(attrs={'class': 'input'}),
         }

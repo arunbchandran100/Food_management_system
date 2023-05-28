@@ -454,7 +454,7 @@ section {
 #donate-heading{
   text-align: center;
   color:#fff ;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   font-size: 48px;
   font-weight: 700;
 }
@@ -475,12 +475,37 @@ section {
   color: #007bff;
   text-decoration: none;
   transition: 0.5s;
+  margin-top: 40px;
 }
 #donate-submit:hover {
   background: #007bff;
   border-color: #007bff;
   color: #fff;
 }
+
+#donate-form{
+  margin-left: 25%;
+}
+#dofm-col2{
+  margin-left: 10%;
+}
+.dof-lab{
+  display: inline-block;
+  text-align: right;
+  margin-right: 5px;
+  color: #fff;
+}
+#dof-fld{
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  width: 130%;
+}
+.label-gap{
+  margin-top: 15px;
+}
+
+
 
 /* food donate forms */
 
@@ -496,9 +521,5 @@ h5{
   color: #fff;
 }
 
-/* donation history */
-#donation_history{
-  color: #fff;
-  font-family: "Montserrat", sans-serif;
-}
+
 
