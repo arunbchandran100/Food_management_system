@@ -5,7 +5,7 @@ from . import views
 app_name = 'food'
 
 urlpatterns = [
-    path('index',views.home,name="index"),
+    path('index1',views.index1,name="index1"),
     path('request_donation',views.request_donation,name='request-donation'),
     path('vfdetails/', views.vfdetails, name="vfdetails"),
     path('vohistory', views.vohistory, name="vohistory"),

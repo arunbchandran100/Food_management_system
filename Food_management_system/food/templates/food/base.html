@@ -46,16 +46,16 @@
 
       <div class="logo">
         <!-- Uncomment below if you prefer to use an text logo -->
-        <!-- <h1><a href="index.html">NewBiz</a></h1> -->
+        <!-- <h1><a href="index1.html">NewBiz</a></h1> -->
         <!-- <a href="home.html"><img src="{% static 'website/assets/img/logo.png'%}" alt="" class="img-fluid"></a> -->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
           {% if request.resolver_match.app_name == 'doner' %}
-          <li><a class="nav-link scrollto active" href="{% url 'doner:index' %}">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'doner:index1' %}">Home</a></li>
         {% elif request.resolver_match.app_name == 'food' %}
-          <li><a class="nav-link scrollto active" href="{% url 'food:index' %}">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'food:index1' %}">Home</a></li>
         {% endif %}
           <li><a class="nav-link scrollto" href="{% url 'food:vfdetails' %}">Availabe Donations</a></li>
           <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li> -->

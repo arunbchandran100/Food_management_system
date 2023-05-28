@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from .forms import RequestDonationForm
 from .models import RequestDonation
-from doner.models import DonateFood
+from doner.models import DonateFoodModel
 
 from django.contrib.auth.decorators import login_required
 @login_required(login_url='login')
-def home(request):
-    return render(request,"food/index.html",{})
+def index1(request):
+    return render(request,"food/index1.html",{})
 
 @login_required(login_url='login')
 def request_donation(request):
@@ -23,7 +23,7 @@ def request_donation(request):
     return render(request, 'food/request_donation.html', {'form': form, 'submitted': submitted})
 
 def vfdetails(request):
-    donations = DonateFood.objects.all()
+    donations = DonateFoodModel.objects.all()
     context = {'donations': donations}
     return render(request, 'food/vfdetails.html', context)
 
