@@ -67,7 +67,6 @@ def SignupPage(request):
     return render(request,'registeration/signup.html')
 
 
-
 @login_required(login_url='login')
 def profile(request):
   if request.method == 'POST':
