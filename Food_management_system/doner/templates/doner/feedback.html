@@ -4,19 +4,19 @@
 {%block body_block%}
 
 <form action="" method="POST">{%csrf_token%}
-
+    <h2 id="donate-heading">FEEDBACK</h2>
             <div class="">
                 <div class="">
                     <div class="">
-                        <label for="Name" class="label">USERNAME</label>
+                        <label for="Name" class="label" style="color:#fff">USERNAME</label>
                         {{form.user}}
                     </div>
                      <div class="">
-                        <label for="address" class="label">FEEDBACK</label>
+                        <label for="address" class="label" style="color:#fff">FEEDBACK</label>
                          {{form.feedback}}
                      </div>
                     <div class="">
-                        <input type="submit" class="button" value="submit">
+                        <input type="submit" id='donate-submit' value="submit">
                     </div>
                 </div>
             </div>

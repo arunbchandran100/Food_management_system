@@ -1,12 +1,7 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-{% if usertype == 'doner' %}
-  {% extends 'doner/base.html' %}
-{% elif usertype == 'distributor' %}
-  {% extends 'food/base.html' %}
-{% else %}
-  {% extends 'base.html' %}
-{% endif %}
+
+{% extends 'doner/base.html' %}
+
 
 
 {% block body_block %}
