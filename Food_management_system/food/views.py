@@ -15,7 +15,7 @@ def request_donation(request):
         form = RequestDonationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("index")
+            return redirect("login")
     else:
         form = RequestDonationForm()
         if 'submitted' in request.GET:
@@ -33,11 +33,19 @@ def vohistory(request):
 def pmanagement(request):
     return render(request, 'food/pmanagement.html')
 
-def uploadf(request):
-    return render(request, 'food/uploadf.html')
+def order(request, donation_id):
+    # Logic to process the order for the given donation_id
+    donation = DonateFoodModel.objects.get(id=donation_id)
+    # Additional processing code
+    context = {
+        'donation': donation
+    }
+    return render(request, 'food/order.html', context)
 
-def updatef(request):
-    return render(request, 'food/updatef.html')
+def viewreq(request):
+    requested_donations = RequestDonation.objects.all()
+    context = {'requested_donations': requested_donations}
+    return render(request, 'food/viewreq.html', context)
 
 def fddetails(request):
     return render(request, 'food/fddetails.html')
