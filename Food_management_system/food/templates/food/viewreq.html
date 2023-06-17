@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends 'food/base.html' %}
+
+{% block body_block %}
+
+<h2 id="donation_history">Requested Donations</h2>
+
+<div>
+    <table class="table table-success table-striped">
+        <tr>
+            <th>User</th>
+            <th>Count</th>
+            <th>Description</th>
+            <th>Request Date</th>
+            <th>Deadline</th>
+            <th>Contact Information</th>
+            <th>Location</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for donation in requested_donations %}
+        <tr>
+            <td>{{ donation.user }}</td>
+            <td>{{ donation.count }}</td>
+            <td>{{ donation.description }}</td>
+            <td>{{ donation.request_date }}</td>
+            <td>{{ donation.deadline }}</td>
+            <td>{{ donation.contact_information }}</td>
+            <td>{{ donation.location }}</td>
+            <td><a href="{% url 'donation-edit' donation.id %}" class="btn btn-success">Edit</a></td>
+            <td><a href="{% url 'donation-delete' donation.id %}" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

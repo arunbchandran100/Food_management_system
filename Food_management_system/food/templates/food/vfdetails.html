@@ -8,19 +8,21 @@
     <div class="row">
       {% for donation in donations %}
       <div class="col-lg-4 col-md-6">
-        <div class="card" style="background: linear-gradient(to bottom right, #00a8ff, #003f9e); border-radius: 5px; padding: 10px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-          <div class="card-header" style="background-color: transparent; border: none;">
-            <h3 class="card-title" style="font-size: 18px; font-weight: bold; color: white; margin: 0;">{{ donation.food_type }}</h3>
+        <a href="{% url 'food:vohistory' %}">
+          <div class="card" style="background: linear-gradient(to bottom right, #00a8ff, #003f9e); border-radius: 5px; padding: 10px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <div class="card-header" style="background-color: transparent; border: none;">
+              <h3 class="card-title" style="font-size: 18px; font-weight: bold; color: white; margin: 0;">{{ donation.food_type }}</h3>
+            </div>
+            <div class="card-body">
+              <p class="card-text" style="color: white;">Food description: {{ donation.food_discription }}</p>
+              <p class="card-text" style="color: white;">Donor: {{ donation.user }}</p>
+              <p class="card-text" style="color: white;">Donor Type: {{ donation.donor_type }}</p>
+              <p class="card-text" style="color: white;">Donor Description: {{ donation.donor_discription }}</p>
+              <p class="card-text" style="color: white;">Supply Date: {{ donation.date }}</p>
+              <p class="card-text" style="color: white;">Location: {{ donation.location }}</p>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text" style="color: white;">Food description: {{ donation.food_discription }}</p>
-            <p class="card-text" style="color: white;">Donor: {{ donation.user }}</p>
-            <p class="card-text" style="color: white;">Donor Type: {{ donation.donor_type }}</p>
-            <p class="card-text" style="color: white;">Donor Description: {{ donation.donor_discription }}</p>
-            <p class="card-text" style="color: white;">Supply Date: {{ donation.date }}</p>
-            <p class="card-text" style="color: white;">Location: {{ donation.location }}</p>
-          </div>
-        </div>
+        </a>
       </div>
       {% endfor %}
     </div>
