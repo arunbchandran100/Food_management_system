@@ -114,7 +114,7 @@ def order(request, donation_id):
 
 
 def viewreq(request):
-    requested_donations = RequestDonation.objects.all()
+    requested_donations = RequestDonation.objects.filter(user=request.user)
     context = {'requested_donations': requested_donations}
     return render(request, 'food/viewreq.html', context)
 
