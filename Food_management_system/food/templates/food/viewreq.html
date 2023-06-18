@@ -27,8 +27,9 @@
             <td>{{ donation.deadline }}</td>
             <td>{{ donation.contact_information }}</td>
             <td>{{ donation.location }}</td>
-            <td><a href="{% url 'donation-edit' donation.id %}" class="btn btn-success">Edit</a></td>
-            <td><a href="{% url 'donation-delete' donation.id %}" class="btn btn-danger">Delete</a></td>
+            <td><a href="{%url 'food:request-edit' donation.id%}" class="btn btn-success">Edit</a></td>
+            <td> <a href="{%url 'food:request-delete' donation.id%}" class="btn btn-danger">Delete</a></td>
+           
         </tr>
         {% endfor %}
     </table>
