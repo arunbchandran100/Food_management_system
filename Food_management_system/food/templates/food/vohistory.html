@@ -1,12 +1,45 @@
 {% extends 'food/base.html' %}
 
-
-{% block title %}Order history{% endblock %}
-
-{% block content %}
-
-<p><a href="{% url 'food:ohistory' %}">View order history here</a></p>
-
-<p><a href="{% url 'food:confirmation' %}">View order confirmation</a></p>
-
+{% block body_block %}
+  <h1 style="color: white;">Order History</h1>
+  {% if orders %}
+  <div class="card" style="background-color: #003f9e; padding: 20px; margin-bottom: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th style="color: white;">Donor</th>
+          <th style="color: white;">Donor Type</th>
+          <th style="color: white;">Donor Description</th>
+          <th style="color: white;">Food Type</th>
+          <th style="color: white;">Food</th>
+          <th style="color: white;">Food Description</th>
+          <th style="color: white;">Date</th>
+          <th style="color: white;">Location</th>
+          <th style="color: white;">Count</th>
+          <th style="color: white;">Description</th>
+          <th style="color: white;">Contact Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr>
+          <td style="color: white;">{{ order.donor }}</td>
+          <td style="color: white;">{{ order.donor_type }}</td>
+          <td style="color: white;">{{ order.donor_discription }}</td>
+          <td style="color: white;">{{ order.food_type }}</td>
+          <td style="color: white;">{{ order.food }}</td>
+          <td style="color: white;">{{ order.food_discription }}</td>
+          <td style="color: white;">{{ order.date }}</td>
+          <td style="color: white;">{{ order.location }}</td>
+          <td style="color: white;">{{ order.count }}</td>
+          <td style="color: white;">{{ order.description }}</td>
+          <td style="color: white;">{{ order.contact_information }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p style="color: white;">No orders found.</p>
+  {% endif %}
 {% endblock %}
