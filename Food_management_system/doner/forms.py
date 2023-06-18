@@ -33,7 +33,11 @@ class DonateFoodForm(ModelForm):
 
             'user': forms.TextInput(attrs={'class': 'input','id':'dof-fld'}),
             'location': forms.TextInput(attrs={'class': 'input','id':'dof-fld'}),
-            'date': forms.TextInput(attrs={'class': 'input','id':'dof-fld'})
+            'date': forms.TextInput(attrs={'class': 'input','id':'dof-fld'}),
+            'counts': forms.TextInput(attrs={'class': 'input','id':'dof-fld'}),
+            'Expire_date': forms.TextInput(attrs={'class': 'input','id':'dof-fld'})
+
+
 
         }
 

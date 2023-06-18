@@ -26,6 +26,8 @@ class DonateFoodModel(models.Model):
     food_discription=models.CharField(max_length=100)
     date=models.DateTimeField()
     location=models.CharField(max_length=100)
+    counts=models.IntegerField(default=10)
+    Expire_date=models.CharField(default=1,max_length=100)
     def __str__(self):
         return self.user
 
