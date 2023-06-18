@@ -1,7 +1,7 @@
 
 from django.urls import path
 from .import views
-from .views import DonateFoodView,DonationHistoryView,FeedbackView,FeedbacklistView,DonationEditView,DonationDeleteView
+from .views import DonateFoodView,DonationHistoryView,FeedbackView,FeedbacklistView,DonationEditView,DonationDeleteView,RequestListView
 
 
 urlpatterns = [
@@ -11,5 +11,7 @@ urlpatterns = [
     path('feedback',FeedbackView.as_view(),name="feedback"),
     path('feedback-list',FeedbacklistView.as_view(),name="feedback-list"),
     path('donation-edit/<int:pk>',DonationEditView.as_view(),name="donation-edit"),
-    path('donation-delete/<int:pk>',DonationDeleteView.as_view(),name='donation-delete')
+    path('donation-delete/<int:pk>',DonationDeleteView.as_view(),name='donation-delete'),
+    path('request-view',RequestListView.as_view(),name='requestview')
+
 ]

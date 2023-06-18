@@ -67,7 +67,6 @@ def SignupPage(request):
     return render(request,'registeration/signup.html')
 
 
-
 @login_required(login_url='login')
 def profile(request):
   if request.method == 'POST':
@@ -130,7 +129,11 @@ def LoginPage(request):
 
         if user is not None:
             login(request,user)
-            return redirect('index')
+            user_type = request.user.profile.user_type
+            if user_type == 'donor':
+                return redirect('index')
+            elif user_type == 'distributor':
+                return redirect('food:index1')
         else:
             #return HttpResponse ("email or Password is incorrect!!!")
             messages.add_message(request, messages.ERROR, f"Wrong email id or Password!!!")

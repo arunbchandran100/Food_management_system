@@ -1,0 +1,38 @@
+{% extends 'food/base.html' %}
+
+{% block body_block %}
+  <h1 style="color: white; font-weight: bold;">Order Details</h1>
+  <div class="order-details">
+    <div class="donation-details">
+      <h3 style="color: white;">Donation Details:</h3>
+      <p><strong style="color: white;">Donor:</strong> <span style="color: #f6c23e;">{{ donation.user }}</span></p>
+      <p><strong style="color: white;">Donor Type:</strong> <span style="color: #f6c23e;">{{ donation.donor_type }}</span></p>
+      <p><strong style="color: white;">Donor Description:</strong> <span style="color: #f6c23e;">{{ donation.donor_discription }}</span></p>
+      <p><strong style="color: white;">Food Type:</strong> <span style="color: #f6c23e;">{{ donation.food_type }}</span></p>
+      <p><strong style="color: white;">Food:</strong> <span style="color: #f6c23e;">{{ donation.food }}</span></p>
+      <p><strong style="color: white;">Food Description:</strong> <span style="color: #f6c23e;">{{ donation.food_discription }}</span></p>
+      <p><strong style="color: white;">Date:</strong> <span style="color: #f6c23e;">{{ donation.date }}</span></p>
+      <p><strong style="color: white;">Location:</strong> <span style="color: #f6c23e;">{{ donation.location }}</span></p>
+    </div>
+    <hr>
+    <h3 style="color: white;">Additional Order Information:</h3>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="count" style="color: white;">Count:</label>
+        <input type="number" id="count" name="count" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="description" style="color: white;">Description:</label>
+        <textarea id="description" name="description" class="form-control" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="contact_information" style="color: white;">Contact Information:</label>
+        <input type="text" id="contact_information" name="contact_information" class="form-control" required>
+      </div>
+      <div style="margin-top: 20px;">
+        <input type="submit" value="Order" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
+{% endblock %}

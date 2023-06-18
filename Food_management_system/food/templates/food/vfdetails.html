@@ -1,0 +1,35 @@
+{% extends 'food/base.html' %}
+
+{% block body_block %}
+<section id="donation-section" class="section">
+  <div class="container">
+    <h2 class="section-title" style="font-weight: bold; color: white; margin-top: -6px; font-size: 40px;">Available Donations</h2>
+    <p style="color: white; margin-top: 20px; font-size: 16px;">Click on any donation to order</p>
+    {% if donations %}
+    <div class="row">
+      {% for don in donations %}
+      <div class="col-lg-4 col-md-6">
+        <a href="{% url 'food:order' donation_id=don.id %}">
+          <div class="card" style="background: linear-gradient(to bottom right, #00a8ff, #003f9e); border-radius: 5px; padding: 10px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <div class="card-header" style="background-color: transparent; border: none;">
+              <h3 class="card-title" style="font-size: 18px; font-weight: bold; color: white; margin: 0;">{{ don.food_type }}</h3>
+            </div>
+            <div class="card-body">
+              <p class="card-text" style="color: white;">Food description: {{ don.food_discription }}</p>
+              <p class="card-text" style="color: white;">Donor: {{ don.user }}</p>
+              <p class="card-text" style="color: white;">Donor Type: {{ don.donor_type }}</p>
+              <p class="card-text" style="color: white;">Donor Description: {{ don.donor_discription }}</p>
+              <p class="card-text" style="color: white;">Supply Date: {{ don.date }}</p>
+              <p class="card-text" style="color: white;">Location: {{ don.location }}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p style="color: white;">No donations available.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE html>
+{%extends 'food/base.html'%}
+
+{%block body_block%}
+
+<h1 id="donate-heading">Request Donation</h1>
+<form action="" method="POST">{%csrf_token%}
+    <div class="container ">
+        <div class="row " id="donate-form">
+            <div class="col-6 col-sm-3">
+                <div class="label-gap">
+                    <label for="user" class="dof-lab">Username</label>
+                    {{form.user}}
+                </div>
+                <div class="label-gap">
+                    <label for="count" class="dof-lab">Count</label>
+                    {{form.count}}
+                </div>
+                <div class="label-gap">
+                    <label for="description" class="dof-lab">Discription</label>
+                    {{form.description}}
+                </div>
+                <div class="label-gap">
+                    <label for="location" class="dof-lab">Location</label>
+                    {{form.location}}
+                </div>
+            </div>
+            <div class="col-6 col-sm-3" id="dofm-col2">
+                <div class="label-gap">
+                    <label for="request_date" class="dof-lab">Request Date</label>
+                    {{form.request_date}}
+                </div>
+                <div class="label-gap">
+                    <label for="deadline" class="dof-lab">Deadline</label>
+                    {{form.deadline}}
+                </div>
+                <div class="label-gap">
+                    <label for="contact_information" class="dof-lab">Contact Information</label>
+                    {{form.contact_information}}
+                </div>
+                <div class="label-gap">
+                    <label for="date" class="dof-lab">Date</label>
+                    {{form.date}}
+                </div>
+            </div>
+            <div class="label-gap">
+      <input type="submit" id='donate-submit'value="submit">
+            </div>
+        </div>
+    </div>
+
+</form>
+    {% endblock %}
+    
+
+
+     

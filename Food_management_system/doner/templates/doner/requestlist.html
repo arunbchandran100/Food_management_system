@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{%extends 'doner/base.html'%}
+
+{%block body_block%}
+
+<table class="table table-success table-striped">
+    <tr>
+        <td>user</td>
+        <td>count</td>
+        <td>description</td>
+        <td>request_date</td>
+        <td>location</td>
+        <td>deadline</td>
+        <td>contact_information</td>
+
+
+    </tr>
+{%for request in requests%}
+<tr>
+        <td>{{request.user}}</td>
+        <td>{{request.count}}</td>
+        <td>{{request.description}}</td>
+        <td>{{request.request_date}}</td>
+        <td>{{request.location}}</td>
+        <td>{{request.deadline}}</td>
+        <td>{{request.contact_information}}</td>
+        
+
+
+
+</tr>
+{%endfor%}
+</table>
+</div>
+
+</div>
+</div>
+{% endblock %}

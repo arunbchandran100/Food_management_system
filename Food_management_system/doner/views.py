@@ -8,6 +8,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils import timezone
 from datetime import date
+from food.models import RequestDonation
 # Create your views here.
 @login_required(login_url='login')
 def home(request):
@@ -91,3 +92,9 @@ class FeedbacklistView(TemplateView):
         context["lists"] = lists
         return render(request,"doner/feedbacklist.html",context)
     
+class RequestListView(TemplateView):
+    def get(self,request,*args,**kwargs):
+        requests=RequestDonation.objects.all()
+        context={}
+        context["requests"]=requests
+        return render(request,"doner/requestlist.html",context)

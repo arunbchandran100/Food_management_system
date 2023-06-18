@@ -1,0 +1,11 @@
+{% extends 'food/base.html' %}
+
+{% block body_block %}
+<section id="confirmation-section" class="section">
+  <div class="container text-center">
+    <h2 class="section-title" style="font-weight: bold; color: white; margin-top: -6px; font-size: 40px;">Order Confirmed</h2>
+    <p style="color: white; margin-top: 20px; font-size: 18px;">Thank you for your order!</p>
+    <a href="{% url 'food:index1' %}" class="btn btn-primary mt-4">Click to return to home</a>
+  </div>
+</section>
+{% endblock %}
